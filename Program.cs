@@ -110,6 +110,6 @@ app.UseAuthentication();
 
 app.MapControllers();
 
-app.MapGet("metodo-program", () => "Criado dentro program para teste");
+//app.MapGet("metodo-program", () => "Criado dentro program para teste");
 
 app.Run();
