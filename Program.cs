@@ -86,13 +86,19 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: "CORS",
-                      policy =>
-                      {
-                          policy.WithOrigins("*")
-                                .WithHeaders("*")
-                                .WithMethods("*");
-                      });
+    // exemplo do CORS Geral
+    options.AddPolicy("Development", builder =>
+                          builder
+                          .AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+
+    // exemplo do CORS específico
+    options.AddPolicy("Production", builder =>
+                        builder
+                        .WithOrigins("sua url específica")
+                        .WithMethods("POST")
+                        .AllowAnyHeader());
 });
 var app = builder.Build();
 
@@ -100,6 +106,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors("Development");
+}
+else
+{
+    app.UseCors("Production");
 }
 
 app.UseHttpsRedirection();
