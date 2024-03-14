@@ -73,7 +73,7 @@ builder.Services.AddAuthentication(options =>
 }).AddJwtBearer(options =>
 {
     options.RequireHttpsMetadata = true; // precisa trabalhar dentro do https para maior segurança
-    options.SaveToken = true; // depois da autorização dando sucesso, voce pode usa-lo novamento
+    options.SaveToken = true; // depois da autorização dando sucesso, voce pode usa-lo novamente
     options.TokenValidationParameters = new TokenValidationParameters()
     {
         IssuerSigningKey = new SymmetricSecurityKey(key), // formato de chave do JWT
