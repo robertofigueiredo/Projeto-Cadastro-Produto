@@ -29,6 +29,7 @@ namespace Projeto_API_Conceitos.Controllers
             return Ok(retorno);
         }
 
+        [AllowAnonymous]
         [HttpGet("{id:int}")]
         [ProducesResponseType(typeof(Produto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
